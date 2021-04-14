@@ -60,3 +60,4 @@ These are the short ids used in the cleaned up results and the full question and
 
 1. Open `results.csv` in LibreOffice Calc. Remove `[OLD VERSION]`, and `[ OLD ]`, questions, and other columns that have no data. Rename columns with Q numbers. Save as `cleaned.csv'
 2. Run `cleanup.py` which produces `clean.csv`
+3. Open `clean.csv` in LibreOffice Calc and remove `*_2`, `*_3`, and `* Writein` columns. Save as `final.csv`
