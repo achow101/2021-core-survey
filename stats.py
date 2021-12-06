@@ -4,11 +4,21 @@
 Compute statistics from the results
 """
 
+from collections import OrderedDict
 from csv import DictReader
 from pprint import pprint
 from typing import Dict
 
+def print_dict_sorted(data):
+    sorted_data = sorted(data.items(), key=lambda item: item[1])
+    sorted_data.reverse()
+    pprint(sorted_data)
+
 def row_count_q(row_data, count_dict):
+    # Normalize to lowercase
+    row_data = row_data.lower()
+
+    # Get the counts
     if row_data not in count_dict:
         count_dict[row_data] = 0
     count_dict[row_data] += 1
@@ -29,6 +39,6 @@ with open("clean.csv", newline="") as f:
     # Print
     print(f"Number of responses: {i+1}")
     print(f"Countries:")
-    pprint(countries)
+    print_dict_sorted(countries)
     print(f"Sources:")
-    pprint(sources)
+    print_dict_sorted(sources)
