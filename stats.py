@@ -30,11 +30,23 @@ with open("clean.csv", newline="") as f:
     # Data
     countries: Dict[str, int] = {}
     sources: Dict[str, int] = {}
+    do_wallet_use_gui: Dict[str, int] = {}
+    do_wallet_use_daemon: Dict[str, int] = {}
+    do_wallet_use_3p: Dict[str, int] = {}
+    did_wallet_use_gui: Dict[str, int] = {}
+    did_wallet_use_daemon: Dict[str, int] = {}
+    did_wallet_use_3p: Dict[str, int] = {}
 
     # Get the data from each row
     for i, row in enumerate(dict_reader):
         row_count_q(row["Q1"], countries)
         row_count_q(row["Q2"], sources)
+        row_count_q(row["Q20a"], do_wallet_use_gui)
+        row_count_q(row["Q20b"], do_wallet_use_daemon)
+        row_count_q(row["Q20c"], do_wallet_use_3p)
+        row_count_q(row["Q32a"], did_wallet_use_gui)
+        row_count_q(row["Q32b"], did_wallet_use_daemon)
+        row_count_q(row["Q32c"], did_wallet_use_3p)
 
     # Print
     print(f"Number of responses: {i+1}")
@@ -42,3 +54,15 @@ with open("clean.csv", newline="") as f:
     print_dict_sorted(countries)
     print(f"Sources:")
     print_dict_sorted(sources)
+    print("Do Use Wallet GUI")
+    print_dict_sorted(do_wallet_use_gui)
+    print("Do Use Wallet with Daemon")
+    print_dict_sorted(do_wallet_use_daemon)
+    print("Do Use Wallet through 3rd Party")
+    print_dict_sorted(do_wallet_use_3p)
+    print("Did Use Wallet GUI")
+    print_dict_sorted(did_wallet_use_gui)
+    print("Did Use Wallet with Daemon")
+    print_dict_sorted(did_wallet_use_daemon)
+    print("Did Use Wallet through 3rd Party")
+    print_dict_sorted(did_wallet_use_3p)
